@@ -62,6 +62,24 @@ export default function Dashboard() {
       alert(err.response?.data?.message || 'Failed to book appointment');
     }
   };
+  
+  const handleCancelAppointment = async (id) => {
+  const confirmCancel = window.confirm('Are you sure you want to cancel this appointment?');
+  if (!confirmCancel) return;
+
+  try {
+    const token = localStorage.getItem('token');
+    await axios.delete(`http://localhost:5000/api/appointments/${id}`, {
+      headers: { Authorization: token },
+    });
+    alert('Appointment cancelled successfully');
+    setAppointments(appointments.filter(app => app._id !== id));
+  } catch (err) {
+    console.error(err.response?.data || err);
+    alert(err.response?.data?.message || 'Failed to cancel appointment');
+  }
+};
+
 
   const handleLogout = () => {
     localStorage.removeItem('token');
@@ -73,7 +91,7 @@ export default function Dashboard() {
   return (
     <div className="container">
       <h2>Welcome {role === 'doctor' ? 'Doctor' : 'Patient'} {name}</h2>
-     <button onClick={handleLogout} style={{ float: 'right', marginBottom: '1rem' }}>
+     <button onClick={handleLogout} style={{ float: 'right', margin: '0 0 0 0' }}>
         Logout
       </button>
 
@@ -98,6 +116,9 @@ export default function Dashboard() {
                 <strong>Doctor:</strong> {app.doctor?.name} ({app.doctor?.email})<br />
                 <strong>Date:</strong> {new Date(app.date).toLocaleDateString()}<br />
                 <strong>Reason:</strong> {app.reason}
+                 <button onClick={() => handleCancelAppointment(app._id)} style={{ marginTop: '-2rem' , marginLeft:'3rem' }}>
+                   Cancel
+                 </button>
               </li>
             ))}
           </ul>
