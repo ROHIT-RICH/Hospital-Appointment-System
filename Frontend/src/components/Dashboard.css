@@ -1,0 +1,85 @@
+/* App container */
+.container {
+  max-width: 700px;
+  margin: 2rem auto;
+  padding: 2rem;
+  background-color: #f8f9fa;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Heading styles */
+h2 {
+  margin-bottom: 1rem;
+  color: #333;
+}
+
+h3 {
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+  color: #444;
+}
+
+/* Logout button */
+button {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+
+/* Form styles */
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+/* Input and select fields */
+input[type="date"],
+input[type="text"],
+select {
+  padding: 0.5rem;
+  font-size: 1rem;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  outline: none;
+  transition: border-color 0.3s ease;
+}
+
+input[type="date"]:focus,
+input[type="text"]:focus,
+select:focus {
+  border-color: #007bff;
+}
+
+/* Appointment list */
+ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+li {
+  background-color: white;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  border-radius: 5px;
+  border: 1px solid #ddd;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+
+/* Align logout button right */
+button[style] {
+  float: right;
+  margin-bottom: 1rem;
+}
